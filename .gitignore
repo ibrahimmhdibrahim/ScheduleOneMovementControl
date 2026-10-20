@@ -1,0 +1,21 @@
+# .NET build output
+bin/
+obj/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build artifacts
+*.dll
+*.pdb
+*.cache
+
+# OS-generated files
+.DS_Store
+Thumbs.db
