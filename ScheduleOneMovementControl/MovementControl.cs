@@ -3,17 +3,17 @@ using UnityEngine;
 using Il2CppScheduleOne.PlayerScripts;
 
 [assembly: MelonInfo(
-    typeof(ScheduleOneSpeedControl.SpeedControl),
-    "ScheduleOneSpeedControl",
+    typeof(ScheduleOneMovementControl.MovementControl),
+    "ScheduleOneMovementControl",
     "1.3.0",
     "KodoBreaker"
 )]
 
 [assembly: MelonGame("TVGS", "Schedule I")]
 
-namespace ScheduleOneSpeedControl
+namespace ScheduleOneMovementControl
 {
-    public class SpeedControl : MelonMod
+    public class MovementControl : MelonMod
     {
         private MelonPreferences_Category category;
 
@@ -25,7 +25,7 @@ namespace ScheduleOneSpeedControl
         public override void OnInitializeMelon()
         {
             category = MelonPreferences.CreateCategory(
-                "ScheduleOneSpeedControl",
+                "ScheduleOneMovementControl",
                 "Schedule One Speed Control"
             );
 
@@ -48,7 +48,7 @@ namespace ScheduleOneSpeedControl
 
             MelonPreferences.Save();
 
-            MelonLogger.Msg("ScheduleOneSpeedControl loaded!");
+            MelonLogger.Msg("ScheduleOneMovementControl loaded!");
             MelonLogger.Msg(
                 $"F5 = Speed 1 ({speed1.Value}x) | " +
                 $"F6 = Speed 2 ({speed2.Value}x) | " +

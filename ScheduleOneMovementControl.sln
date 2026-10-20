@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleOneSpeedControl", "ScheduleOneSpeedControl\ScheduleOneSpeedControl.csproj", "{679C9136-6A9F-41F3-8EAC-053BD49A1E3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleOneMovementControl", "ScheduleOneMovementControl\ScheduleOneMovementControl.csproj", "{679C9136-6A9F-41F3-8EAC-053BD49A1E3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
