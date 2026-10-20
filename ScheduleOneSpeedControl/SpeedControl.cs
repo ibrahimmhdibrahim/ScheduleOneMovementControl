@@ -1,5 +1,4 @@
-﻿
-using MelonLoader;
+﻿using MelonLoader;
 using UnityEngine;
 using Il2CppScheduleOne.PlayerScripts;
 
@@ -21,6 +20,7 @@ namespace ScheduleOneSpeedControl
         private MelonPreferences_Entry<float> speed1;
         private MelonPreferences_Entry<float> speed2;
         private MelonPreferences_Entry<float> speed3;
+        private MelonPreferences_Entry<float> JumpMultiplier;
 
         public override void OnInitializeMelon()
         {
@@ -30,15 +30,20 @@ namespace ScheduleOneSpeedControl
             );
 
             speed1 = category.CreateEntry(
-                "Speed1", 1f, "Speed 1", "Select this speed by pressing the F5 key."
+                "Speed1", 1f, "Speed 1", "Select This Speed By Pressing The F5 Key."
             );
 
             speed2 = category.CreateEntry(
-                "Speed2", 2f, "Speed 2", "Select this speed by pressing the F6 key."
+                "Speed2", 2f, "Speed 2", "Select This Speed By Pressing The F6 Key."
             );
 
             speed3 = category.CreateEntry(
-                "Speed3", 3f, "Speed 3", "Select this speed by pressing the F7 key."
+                "Speed3", 3f, "Speed 3", "Select This Speed By Pressing The F7 Key."
+            );
+
+
+            JumpMultiplier = category.CreateEntry(
+                "JumpMultiplier", 3f, "Jump Multiplier", "Change Jump Height By Pressing The F8 key."
             );
 
             MelonPreferences.Save();
@@ -48,6 +53,10 @@ namespace ScheduleOneSpeedControl
                 $"F5 = Speed 1 ({speed1.Value}x) | " +
                 $"F6 = Speed 2 ({speed2.Value}x) | " +
                 $"F7 = Speed 3 ({speed3.Value}x)"
+            );
+            
+            MelonLogger.Msg(
+                $"JumpMultiplier at initialization: {PlayerMovement.JumpMultiplier}"
             );
         }
 
@@ -59,6 +68,10 @@ namespace ScheduleOneSpeedControl
                 ApplySpeed(speed2.Value, "Speed 2");
             else if (Input.GetKeyDown(KeyCode.F7))
                 ApplySpeed(speed3.Value, "Speed 3");
+            else if (Input.GetKeyDown(KeyCode.F8))
+                ApplyJumpForce(JumpMultiplier.Value, "Jump Multiplier");
+            else if (Input.GetKeyDown(KeyCode.F9))
+                ApplyJumpForce(1.0f, "Reset Jump Multiplier");
         }
 
         private void ApplySpeed(float multiplier, string slotName)
@@ -70,6 +83,16 @@ namespace ScheduleOneSpeedControl
 
             MelonLogger.Msg(
                 $"{slotName} activated: {multiplier:0.##}x"
+            );
+        }
+
+        private void ApplyJumpForce(float force, string settingName)
+        {
+            // PlayerMovement.JumpForce = force;
+            PlayerMovement.JumpMultiplier = force;
+
+            MelonLogger.Msg(
+                $"JumpMultiplier={PlayerMovement.JumpMultiplier}" + ":" + settingName
             );
         }
     }
